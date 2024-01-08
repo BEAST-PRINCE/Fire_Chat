@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "303301179170",
+    "project_id": "fire-chat-11304",
+    "storage_bucket": "fire-chat-11304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303301179170:android:5ae08ef36194b76b9dd77b",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUS3QyK49GaJzk_fi0Z5RgxQ5IwNsJVdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303301179170:android:64cf4bf60468643b9dd77b",
+        "android_client_info": {
+          "package_name": "com.prince.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUS3QyK49GaJzk_fi0Z5RgxQ5IwNsJVdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
