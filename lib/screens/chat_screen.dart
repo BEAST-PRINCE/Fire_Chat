@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       try{
-                        _firestore.collection('chat_messages').add({'text': messageText, 'sender': loggedInUser.email});
+                        _firestore.collection('chat_messages').add({'text': messageText, 'sender': loggedInUser.email, 'timestamp': FieldValue.serverTimestamp()});
                         textController.clear();
                       }catch(e){
                         print(e);
@@ -128,7 +128,7 @@ class MessageStream extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(stream: _firestore.collection('chat_messages').snapshots(),
+    return StreamBuilder<QuerySnapshot>(stream: _firestore.collection('chat_messages').orderBy('timestamp').snapshots(),
         builder: (context, snapshot) {
           List<MessageBubble> messageWidgets = [];
           if(!snapshot.hasData){
@@ -136,7 +136,7 @@ class MessageStream extends StatelessWidget {
               backgroundColor: Colors.deepOrange,
             ),);
           }
-          final messages = snapshot.data?.docs.reversed;
+          final messages = snapshot.data?.docs;
           for( var message in messages!){
             final textMessage = message.get('text');
             final messageSender = message.get('sender');
@@ -174,10 +174,11 @@ class MessageBubble extends StatelessWidget {
             color: isUser?Colors.lightBlueAccent:Colors.white,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-              child: Text(text,
-                style: TextStyle(color: Colors.deepOrange[900],
-                    fontSize: 20, fontWeight: FontWeight.w400)),
-            )),
+              child: Text(text,softWrap: true,
+                  style: TextStyle(color: Colors.deepOrange[900],
+                      fontSize: 20, fontWeight: FontWeight.w400)),
+              ),
+            ),
         ],
       ),
     );
